@@ -1,0 +1,14 @@
+CREATE TABLE students (
+  student_id VARCHAR(20) PRIMARY KEY,
+  password VARCHAR(50),
+  has_voted BOOLEAN DEFAULT 0
+);
+
+CREATE TABLE candidates (
+  name VARCHAR(100) PRIMARY KEY,
+  vote_count INT DEFAULT 0
+);
+
+-- Sample Users and Candidates
+INSERT INTO students VALUES ('stu01', '12345', 0), ('stu02', 'abcde', 0);
+INSERT INTO candidates VALUES ('Alice', 0), ('Bob', 0), ('Charlie', 0);

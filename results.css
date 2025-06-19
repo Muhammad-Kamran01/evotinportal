@@ -1,0 +1,118 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+/* --- General Body/Page Styling for Results Page --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #e0f2f7, #c1e4f4); /* Consistent background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to the top (with some margin) */
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+    padding-top: 50px; /* Add some space from the top */
+    box-sizing: border-box;
+}
+
+/* --- Heading for the Results Page --- */
+h2 {
+    color: #2d3748;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 40px; /* Space below the heading */
+    text-align: center;
+    width: 100%;
+    max-width: 800px; /* Constrain width for a cleaner look */
+    box-sizing: border-box;
+}
+
+/* --- Table Styling --- */
+table {
+    width: 90%; /* Responsive width */
+    max-width: 700px; /* Max width for the table */
+    border-collapse: collapse; /* Collapse borders for a clean look */
+    background-color: #ffffff; /* White background for the table */
+    border-radius: 15px; /* Rounded corners for the table */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    overflow: hidden; /* Ensures rounded corners apply to children */
+    margin-bottom: 50px; /* Space below the table */
+}
+
+/* Table Header (<th>) Styling */
+th {
+    background-color: #3182ce; /* Blue header background */
+    color: white; /* White text for headers */
+    padding: 15px 20px;
+    text-align: center; /* <<< CHANGED: Center align header text */
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Table Data (<td>) Styling */
+td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #e2e8f0; /* Light border between rows */
+    color: #4a5568;
+    font-size: 16px;
+}
+
+/* Style for even rows (optional, but good for readability) */
+tr:nth-child(even) {
+    background-color: #f7fafc; /* Light gray background for even rows */
+}
+
+/* Remove bottom border for the last row */
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Specific styling for the Candidate Name column (left align by default) */
+td:first-child {
+    text-align: left; /* Ensure candidate names are left-aligned */
+}
+
+/* Specific styling for the Vote Count column (right align numbers as per previous instruction) */
+td:last-child {
+    font-weight: 500;
+    color: #2d3748;
+    text-align: center; /* <<< CHANGED: Center align vote count in cells */
+    font-size: 17px;
+}
+
+/* --- Responsive Adjustments --- */
+@media screen and (max-width: 768px) {
+    h2 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    table {
+        width: 95%;
+        border-radius: 10px;
+    }
+    th, td {
+        padding: 12px 15px;
+        font-size: 15px;
+    }
+    th:last-child, td:last-child {
+        text-align: center; /* Center align vote count on smaller screens, consistent with header now */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h2 {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+    th, td {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+    table {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+}

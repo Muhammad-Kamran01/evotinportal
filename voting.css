@@ -1,0 +1,223 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+/* --- General Body/Page Styling for Voting Page --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #e0f2f7, #c1e4f4); /* A soft, calming blue gradient background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Content stacks vertically for simplicity on voting page */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    min-height: 100vh; /* Full viewport height */
+    color: #333; /* Default text color */
+}
+
+/* --- Heading for the Voting Form --- */
+h2 {
+    color: #2d3748;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px; /* Space below the heading */
+    text-align: center; /* Center the heading text */
+    width: 100%; /* Ensure it takes full width for centering */
+    max-width: 500px; /* Constrain width for a cleaner look */
+    box-sizing: border-box;
+}
+
+/* --- Main Content Container for the Voting Form (the <form> tag itself) --- */
+form {
+    background-color: #ffffff; /* White card background */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    padding: 40px; /* Ample padding inside the card */
+    margin: 0; /* Remove default form margin, controlled by body's flexbox */
+    max-width: 500px; /* Max width for the form container */
+    width: 90%; /* Responsive width */
+    box-sizing: border-box;
+    text-align: left; /* Align form elements to the left by default within the card */
+}
+
+/* --- NEW: Wrapper for each candidate option --- */
+.candidate-option {
+    display: flex; /* Use flexbox for alignment */
+    align-items: flex-start; /* Align items to the start (top) of the container */
+    margin-bottom: 15px; /* Space between each candidate option */
+    cursor: pointer; /* Indicate it's clickable */
+    padding: 8px 12px; /* Padding inside the option container */
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background-color: #f7fafc;
+    transition: all 0.2s ease;
+}
+
+.candidate-option:hover {
+    border-color: #38b2ac;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+
+/* --- Candidate Radio Buttons Styling --- */
+input[type="radio"] {
+    /* Hide the default radio button */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px; /* Custom radio button size */
+    height: 20px;
+    border: 2px solid #a0aec0;
+    border-radius: 50%;
+    position: relative; /* For the custom dot */
+    cursor: pointer;
+    margin: 4px 15px 0 0; /* Top margin for alignment, right margin for spacing, 0 bottom/left */
+    flex-shrink: 0; /* Prevent it from shrinking */
+    transition: all 0.2s ease;
+}
+
+/* Custom dot for selected radio button */
+input[type="radio"]:checked::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: #38b2ac; /* Teal dot */
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Checked state for the custom radio button */
+input[type="radio"]:checked {
+    border-color: #38b2ac; /* Teal border when selected */
+    background-color: #e6fffa; /* Light background when selected */
+}
+
+/* --- Label (Candidate Name Text) Styling --- */
+.candidate-option label {
+    flex-grow: 1; /* Allow text to take up remaining space */
+    font-size: 16px;
+    color: #4a5568;
+    line-height: 1.5; /* Ensure good line spacing if text wraps */
+    cursor: pointer; /* Makes the text also clickable */
+    padding-right: 5px; /* Small padding if text wraps close to edge */
+}
+
+/* When the radio button is checked, style the parent container */
+input[type="radio"]:checked ~ label {
+    color: #2c5282; /* Darker text for selected option */
+    font-weight: 500;
+}
+
+
+/* --- Submit Vote Button --- */
+button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    margin-top: 25px; /* Space above button */
+    background-color: #3182ce; /* Blue color consistent with other pages */
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(49, 130, 206, 0.3);
+    box-sizing: border-box;
+}
+
+button[type="submit"]:hover {
+    background-color: #2b6cb0;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(49, 130, 206, 0.4);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(49, 130, 206, 0.2);
+}
+
+/* --- "Already Voted" / "Vote Submitted" Message and Link --- */
+body > p { /* Target direct <p> tags that are children of body */
+    font-size: 20px;
+    color: #2d3748;
+    font-weight: 500;
+    margin-bottom: 15px;
+    text-align: center;
+    background-color: #ffffff; /* White background for the message box */
+    padding: 25px 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 90%;
+    box-sizing: border-box;
+}
+
+body > a { /* Target direct <a> tags that are children of body, e.g., "View Results" */
+    color: #3182ce; /* Blue link color */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    margin-top: 10px;
+    display: inline-block; /* Make it behave like a block for padding/sizing */
+    /* Style as a button for consistency */
+    background-color: #3182ce;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(49, 130, 206, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+body > a:hover {
+    text-decoration: none;
+    background-color: #2b6cb0;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(49, 130, 206, 0.3);
+}
+
+/* --- Responsive Adjustments --- */
+@media screen and (max-width: 600px) {
+    h2 {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+    form, body > p, body > a {
+        width: 95%;
+        padding: 20px;
+        margin: 0;
+    }
+
+    .candidate-option {
+        padding: 6px 10px;
+    }
+    input[type="radio"] {
+        width: 18px;
+        height: 18px;
+        margin: 2px 10px 0 0;
+    }
+    input[type="radio"]:checked::before {
+        width: 8px;
+        height: 8px;
+    }
+    .candidate-option label {
+        font-size: 15px;
+    }
+
+    button[type="submit"] {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    body > p {
+        font-size: 18px;
+    }
+    body > a {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
