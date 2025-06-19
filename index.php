@@ -6,8 +6,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['student_id'];
     $pass = $_POST['password'];
 
-    $sql = "SELECT * FROM students WHERE student_id='$id' AND password='$pass'";
-    $result = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT * FROM students WHERE student_id=? AND password=?");
+    $stmt->bind_param("ss", $id, $pass);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows == 1) {
         $_SESSION['student_id'] = $id;
